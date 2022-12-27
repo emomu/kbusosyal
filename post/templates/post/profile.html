@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block head %}
+<style>
+    kutu{
+
+        background-color: rgb(21, 255, 0);
+    }
+</style>
+{% endblock %}
+{% block content %}
+
+<div class="column">
+
+    <div class="block mt-6">
+    <h1 class="title is-2">
+        {{profile.user.username|lower}}
+    </h1>
+    <h3 class="title is-5" >{{ profile.followed_by.all.count }} takipçi | {{ profile.follows.all.count }} takip</h3>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        <div class="buttons">
+        {% if profile in user.profile.follows.all %}
+            <button class="button is-success is-static">takip et</button>
+            <button class="button is-danger" name="follow" value="unfollow">
+                takipten çık
+            </button>
+        {% else %}
+            <button class="button is-link" name="follow" value="follow">
+                takip et
+            </button>
+            <button class="button is-link is-static">takipten çık</button>
+        {% endif %}
+        <div class="block">
+                <button class="button is-primary is-dark is-rounded">
+                    <a class="has-text-white" href="{% url 'dwitter:followed-list' request.user.profile.id %}"> 
+                        takipçileri
+                    </a>
+                </button>
+                <button class="button is-info is-text-white is-rounded">
+                    <a class="has-text-white" href="{% url 'dwitter:follows-list' request.user.profile.id %}">
+                        takip ettikleri {{profile.create_profile}}
+                    </a>
+                </button>
+                
+        </div>
+        </div>
+    </form>
+
+
+    <div class="column">
+        {% for dweet in profile.user.dweets.all %}
+                <div class="box bg-box bs-box mt-5">
+                    <p>
+                        <strong>{{ dweet.user.username }} | ({{ dweet.created_at }})</strong>
+                        <br>
+                    {{ dweet.body }}
+                    <nav class="level is-mobile">
+                        <div class="level-left">
+                          <a class="level-item">
+                                <form action="{% url 'post:like-post' %}" method="POST" class="ui form">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="post_id" value="{{dweet.id}}">
+                                    {% if user not in dweet.liked.all %}
+                                        <button class="ui button positive mt-2 is-small" type = "submit">kalple</button>
+                                    {% else %}
+                                        <button class="ui button negative has-text-white is-small has-background-danger-dark mt-2" type = "submit">kalpledin</button>
+                                    {% endif %}
+                                </form>
+                                <button class="button is-white  mt-2">{{ dweet.liked.all.count }} kalp!</button>
+                          </a>
+                        </div>
+                      </nav>
+                </div>
+            {% endfor %}
+    </div>
+    
+
+</div>
+
+
+
+{% endblock content %}

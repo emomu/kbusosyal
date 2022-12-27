@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    .sh{
+      background-color: rgb(89, 6, 6);
+    }
+    body {
+
+      background-color: #ffe08a;
+    }
+  </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBU Sosyal</title>
+    <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <div class="navbar-end mt-2 ml-6">
+            <strong class="button is-warning">kbu sosyal</strong>
+
+          </div>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+          <div class="navbar-start">
+      
+            <a href="http://127.0.0.1:8000/kesfet/" class="navbar-item has-text-warning">
+              kesfet
+            </a>
+            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+              profilim
+            </a>
+            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+              kampüsler
+            </a>
+      
+            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+              yurtlar
+            </a>
+      
+            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+              yemek
+            </a>
+
+            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+              site hakkında
+            </a>
+      
+      
+      
+      
+
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                <strong class="button">merhaba {{request.user}}</strong>
+                <a href="http://127.0.0.1:8000/logout/" class="button is-warning">
+                  <strong>ben çıktım</strong>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    {% block head %}
+
+    {% endblock %}
+</head>
+<body>
+    
+    <div class="container">
+        <div class="columns">
+
+            {% block content %}
+
+            {% endblock content %}
+
+        </div>
+      </div>
+
+      <footer class ="footer has-background-link mt-6"> 
+        <div class="column has-text-centered has-background-warning">
+        <p>
+          <strong>kbu sosyal</strong> | telif hakkı falan filan ©gokyuzu herkesindir
+        </p>
+      </div>
+      </footer>
+
+
+</body>
+</html>

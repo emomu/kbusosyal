@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="column">
+    {% for posted in qss %}
+            <div class="box bg-box bs-box mt-5">
+                <p class="has-text-dark">
+                {{ posted.bodyp }}
+            </div>
+        {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

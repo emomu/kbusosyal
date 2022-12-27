@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="column">
+    <div class="block mt-6">
+        <h3 class="title is-4">
+            {{profile.user.username}} kişisinin takip ettikleri
+        </h3>
+        <div class="content">
+            <ul>
+            {% for following in profile.follows.all %}
+                <li>
+                    <a href="{% url 'dwitter:profile' following.id %}">
+                        {{ following }}
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock content %}
+

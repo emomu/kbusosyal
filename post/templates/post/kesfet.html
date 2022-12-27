@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+<div class="column is-one-third mt-5">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.body }}
+        <button class="button is-link is-fullwidth is-medium mt-4">
+            gönder gitsin
+
+        </button>
+    </form>
+</div>
+
+
+<div class="column">
+    {% for dweet in qs %}
+            <div class="box bg-box bs-box mt-5">
+                <p class="has-text-dark">
+                    <strong class="has-text-dark">{{ dweet.user.username }} | ({{ dweet.created_at }})</strong>
+                    <br>
+                {{ dweet.body }}
+                <nav class="level is-mobile">
+                    <div class="level-left">
+                      <a class="level-item">
+                            <form action="{% url 'post:like-post' %}" method="POST" class="ui form">
+                                {% csrf_token %}
+                                <input type="hidden" name="post_id" value="{{dweet.id}}">
+                                {% if user not in dweet.liked.all %}
+                                    <button class="ui button positive mt-2 is-small" type = "submit">kalple</button>
+                                {% else %}
+                                    <button class="ui button negative has-text-white is-small has-background-danger-dark mt-2" type = "submit">kalpledin</button>
+                                {% endif %}
+                            </form>
+                            <button class="button is-white  mt-2">{{ dweet.liked.all.count }} kalp!</button>
+                      </a>
+                    </div>
+                  </nav>
+            </div>
+        {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock content %}
