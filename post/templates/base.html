@@ -18,15 +18,15 @@
     <title>KBU Sosyal</title>
     <nav class="navbar has-background-link-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <div class="navbar-end mt-2 ml-6">
+          <div class="navbar-item">
             <strong class="button is-warning">kbu sosyal</strong>
           </div>
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <a class="navbar-burger has-text-white" id="burger">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </a>
         </div>
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbarBasicExample" class="navbar-menu has-background-link-dark">
           <div class="navbar-start">
       
             <a href="{% url 'dwitter:kesfet' %}" class="navbar-item has-text-warning">
@@ -39,7 +39,7 @@
               kampüsler
             </a>
       
-            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+            <a href="{% url 'dwitter:yurtlar' %} " class="navbar-item has-text-warning">
               yurtlar
             </a>
       
@@ -96,7 +96,14 @@
         </p>
       </div>
       </footer>
+<script>
+  const burgerIcon = document.querySelector('#burger');
+  const navbarMenu = document.querySelector('#navbarBasicExample');
 
+burgerIcon.addEventListener('click',() =>{
+navbarMenu.classList.toggle('is-active')
 
+})
+</script>
 </body>
 </html>
