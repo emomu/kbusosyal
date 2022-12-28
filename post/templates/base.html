@@ -20,11 +20,12 @@
         <div class="navbar-brand">
           <div class="navbar-end mt-2 ml-6">
             <strong class="button is-warning">kbu sosyal</strong>
-
           </div>
-    <div id="app">
-      <div class="navbar-burger" v-on:click="showNav = !showNav" v-bindclass="{ 'is-active' : showNav}">
-      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
       
@@ -70,8 +71,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
       </nav>
 
     {% block head %}
