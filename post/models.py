@@ -38,7 +38,7 @@ def create_profile(sender, instance, created, **kwargs):
 
 class Dweet(models.Model):
     user = models.ForeignKey(User,related_name="dweets",on_delete=models.DO_NOTHING)
-    body = models.CharField(max_length=90)
+    body = models.CharField(max_length=150)
     created_at = models.DateTimeField(auto_now_add=True)
     liked = models.ManyToManyField(User, default=None , blank=True , related_name='liked')
     updated = models.DateTimeField(auto_now=True)

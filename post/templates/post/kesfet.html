@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block head %}
+<style>
+    html , body{
+
+        background-color: #ffe08a;
+    }
+</style>
 {% endblock %}
 
 {% block content %}
@@ -23,7 +29,9 @@
                 <p class="has-text-dark">
                     <strong class="has-text-dark">{{ dweet.user.username }} | ({{ dweet.created_at }})</strong>
                     <br>
+                <div class="title is-6 has-text-link mt-2">
                 {{ dweet.body }}
+            </div>
                 <nav class="level is-mobile">
                     <div class="level-left">
                       <a class="level-item">

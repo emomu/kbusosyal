@@ -32,7 +32,7 @@
         <div id="navbarBasicExample" class="navbar-menu">
           <div class="navbar-start">
       
-            <a href="http://127.0.0.1:8000/kesfet/" class="navbar-item has-text-warning">
+            <a href="{% url 'dwitter:kesfet' %}" class="navbar-item has-text-warning">
               kesfet
             </a>
             <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
@@ -49,6 +49,9 @@
             <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
               yemek
             </a>
+            <a href="{% url 'dwitter:profile_list'%}" class="navbar-item has-text-warning">
+              kullanıcı ara
+            </a>   
 
             <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
               site hakkında
@@ -64,7 +67,7 @@
             <div class="navbar-item">
               <div class="buttons">
                 <strong class="button">merhaba {{request.user}}</strong>
-                <a href="http://127.0.0.1:8000/logout/" class="button is-warning">
+                <a href="{% url 'dwitter:logout'%}" class="button is-danger has-text-white">
                   <strong>ben çıktım</strong>
                 </a>
               </div>
@@ -89,7 +92,7 @@
         </div>
       </div>
 
-      <footer class ="footer has-background-link mt-6"> 
+      <footer class ="footer has-background-warning mt-6"> 
         <div class="column has-text-centered has-background-warning">
         <p>
           <strong>kbu sosyal</strong> | telif hakkı falan filan ©gokyuzu herkesindir

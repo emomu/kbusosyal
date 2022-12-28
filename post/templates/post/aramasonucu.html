@@ -10,7 +10,6 @@
 
 {% block content %}
 
-
 <div class="column">
   <form action="{% url 'dwitter:aramasonucu' %}" method="get">
     <div class="field has-addons mt-6">
@@ -26,8 +25,8 @@
   </form>
 
 
+{% if profiles %}
 {% for profile in profiles %}
-
     <div class="block mt-5">
       <div class="card">
         <a href="{% url 'dwitter:profile' profile.id %}">
@@ -45,9 +44,28 @@
         </a>
       </div>
     </div>
+    {% endfor %}
+{% else %}
 
-{% endfor %}
+<div class="block mt-5">
+    <div class="card">
+      <a href="#">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+            </div>
+            <div class="media-content">
+              <p class="title is-5 has-text-danger-dark">
+                yazdığınız kullanıcı adını bulamadım sayın bezmenler
+              </p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
 
+{% endif %}
 </div>
 
 {% endblock content %}

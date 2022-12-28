@@ -1,25 +1,40 @@
 {% extends 'base.html' %}
+{% block head %}
+<style>
+    html , body{
+
+        background-color: #ffe08a;
+    }
+</style>
+{% endblock %}
 
 {% block content %}
-
-<div class="column">
-    <div class="block mt-6">
-        <h3 class="title is-4">
-            {{profile.user.username}} kişisinin takipçileri
-        </h3>
-        <div class="content">
-            <ul>
-            {% for follower in profile.followed_by.all %}
-                <li>
-                    <a href="{% url 'dwitter:profile' follower.id %}">
-                        {{ follower }}
-                    </a>
-                </li>
+    <div class="column mt-6">
+        <div class="block ml-6">
+            <h3 class="title is-4">
+                {{profile.user.username}} kişisinin takipçileri
+            </h3>
+        <div class="block mt-5">
+          <div class="card ml-6">
+            {% for followed in profile.followed_by.all %}
+            <a href="{% url 'dwitter:profile' followed.id %}">
+              <div class="card-content">
+                <div class="media">
+                  <div class="media-left">
+                  </div>
+                  <div class="media-content">
+                    <p class="title is-5">
+                      {{ followed }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </a>
             {% endfor %}
-            </ul>
+          </div>
+        </div>
         </div>
     </div>
-</div>
 
 
 {% endblock content %}

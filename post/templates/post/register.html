@@ -83,7 +83,7 @@
 							</div>
 							{{form.username}}
 						</div>
-						<div class="input-group mb-2">
+						<div class="input-group mb-2" , aria-required="true">
 							<div class="input-group-append">
 								<span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
 							</div>
@@ -110,7 +110,7 @@
 		        {{form.errors}}
 				<div class="mt-4">
 					<div class="d-flex justify-content-center links text-white">
-						 hesabın varsa burdan devam...<a class="text-warning" href="http://127.0.0.1:8000/login/" class="ml-2">buyrun!</a>
+						 hesabın varsa burdan devam...<a class="text-warning" href="{% url 'dwitter:login' %}" class="ml-2">buyrun!</a>
 					</div>
 				</div>
 			</div>

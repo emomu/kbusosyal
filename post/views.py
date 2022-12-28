@@ -1,6 +1,7 @@
 
-from .models import Profile , Like , Dweet , Posted 
-from .forms import DweetForm , CreateUserForm
+from .models import Like ,  Dweet , Posted , Profile
+from .models import Profile as ProfileModel 
+from .forms import DweetForm , CreateUserForm 
 from django.shortcuts import render, redirect , get_object_or_404
 from django.http import HttpResponseRedirect
 from django.contrib.auth import login
@@ -10,7 +11,11 @@ from django.contrib.auth import authenticate , login ,logout
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
+from django.core.exceptions import ValidationError
 
+def giris(request):
+    return render(request,"post/giris.html")
 
 @login_required(login_url='dwitter:login')
 def dashboardposted(request):
@@ -70,6 +75,19 @@ def like_post(request):
         like.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+@login_required(login_url='dwitter:login')
+def profile_list_query(request):
+    if 'user' in request.GET and request.GET['user']:
+        user = request.GET['user']
+        if user:
+            profiles = Profile.objects.filter(user__username__icontains=user)
+            return render(request, 'post/aramasonucu.html' , {'profiles' : profiles})
+        else:
+            print("Aranılan sonuç bulunamadı")
+            return render(request , 'post/aramasonucu.html' , {})
+
+    else:
+        return render(request , 'post/aramasonucu.html' , {})
 
 
 @login_required(login_url='dwitter:login')
@@ -177,3 +195,4 @@ def register(request):
     return render(request,'post/register.html' ,context)
 
 
+   
