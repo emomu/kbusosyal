@@ -33,12 +33,12 @@
         {% endif %}
         <div class="block">
                 <button class="button is-primary is-dark is-rounded">
-                    <a class="has-text-white" href="{% url 'dwitter:followed-list' profile.id %}"> 
+                    <a class="has-text-white" href="{% url 'kbusosyal:followed-list' profile.id %}"> 
                         takipçileri
                     </a>
                 </button>
                 <button class="button is-info is-text-white is-rounded">
-                    <a class="has-text-white" href="{% url 'dwitter:follows-list' profile.id %}">
+                    <a class="has-text-white" href="{% url 'kbusosyal:follows-list' profile.id %}">
                         takip ettikleri {{profile.create_profile}}
                     </a>
                 </button>

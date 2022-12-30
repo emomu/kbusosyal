@@ -17,7 +17,7 @@
         <div class="block mt-5">
           <div class="card ml-6">
             {% for followed in profile.followed_by.all %}
-            <a href="{% url 'dwitter:profile' followed.id %}">
+            <a href="{% url 'kbusosyal:profile' followed.id %}">
               <div class="card-content">
                 <div class="media">
                   <div class="media-left">

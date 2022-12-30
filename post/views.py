@@ -18,11 +18,11 @@ from django.core.exceptions import ValidationError
 def giris(request):
     return render(request,"post/giris.html")
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def sitehakkinda(request):
     return render(request,"post/sitehakkinda.html")
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def posted(request):
     qs = Posted.objects.all()
     userp = request.user
@@ -36,7 +36,7 @@ def posted(request):
     return render(request,"post/yurtlar.html" , context )
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def kesfet(request):
     form = DweetForm(request.POST or None)
     if request.method == "POST":
@@ -44,7 +44,7 @@ def kesfet(request):
             dweet = form.save(commit=False)
             dweet.user = request.user
             dweet.save()
-            return redirect("dwitter:kesfet")
+            return redirect("kbusosyal:kesfet")
     qs = Dweet.objects.all()
     user = request.user
 
@@ -58,7 +58,7 @@ def kesfet(request):
     return render(request,"post/kesfet.html" , context )
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def like_post(request):
     user = request.user
     if request.method == 'POST':
@@ -80,7 +80,7 @@ def like_post(request):
         like.save()
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def profile_list_query(request):
     if 'user' in request.GET and request.GET['user']:
         user = request.GET['user']
@@ -95,13 +95,13 @@ def profile_list_query(request):
         return render(request , 'post/aramasonucu.html' , {})
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def profile_list(request):
     profiles = Profile.objects.exclude(user=request.user)
     return render(request, "post/profile_list.html", {"profiles": profiles})
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def follows_list(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
@@ -120,7 +120,7 @@ def follows_list(request, pk):
     return render(request, "post/follows.html", {"profile": profile}) 
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def followed_list(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
@@ -139,7 +139,7 @@ def followed_list(request, pk):
     return render(request, "post/followed.html", {"profile": profile}) 
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def profile(request, pk):
     if not hasattr(request.user, 'profile'):
         missing_profile = Profile(user=request.user)
@@ -167,7 +167,7 @@ def loginn(request):
 
         if user is not None:
             login(request, user)
-            return redirect('dwitter:kesfet')
+            return redirect('kbusosyal:kesfet')
 
         else:
             messages.info(request,'kullanıcı adı ya da şifren yanlış.')
@@ -178,10 +178,10 @@ def loginn(request):
 
 
 
-@login_required(login_url='dwitter:login')
+@login_required(login_url='kbusosyal:login')
 def logoutt(request):
     logout(request)
-    return redirect('dwitter:login')
+    return redirect('kbusosyal:login')
 
 def register(request):
     form = CreateUserForm()
@@ -191,7 +191,7 @@ def register(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request,'hesabın başarıyla oluşturuldu ' + user)
-            return redirect('dwitter:login')
+            return redirect('kbusosyal:login')
 
 
     context = {

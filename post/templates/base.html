@@ -29,21 +29,21 @@
         <div id="navbarBasicExample" class="navbar-menu has-background-link-dark">
           <div class="navbar-start">
       
-            <a href="{% url 'dwitter:kesfet' %}" class="navbar-item has-text-warning">
+            <a href="{% url 'kbusosyal:kesfet' %}" class="navbar-item has-text-warning">
               kesfet
             </a>
-            <a href="{% url 'dwitter:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
+            <a href="{% url 'kbusosyal:profile' request.user.profile.id %} " class="navbar-item has-text-warning">
               profilim
             </a>
        
       
     
 
-            <a href="{% url 'dwitter:profile_list'%}" class="navbar-item has-text-warning">
+            <a href="{% url 'kbusosyal:profile_list'%}" class="navbar-item has-text-warning">
               kullanıcı ara
             </a>   
 
-            <a href="{% url 'dwitter:sitehakkinda'%} " class="navbar-item has-text-warning">
+            <a href="{% url 'kbusosyal:sitehakkinda'%} " class="navbar-item has-text-warning">
               site hakkında
             </a>
       
@@ -57,7 +57,7 @@
             <div class="navbar-item">
               <div class="buttons">
                 <strong class="button">merhaba {{request.user}}</strong>
-                <a href="{% url 'dwitter:logout'%}" class="button is-danger has-text-white">
+                <a href="{% url 'kbusosyal:logout'%}" class="button is-danger has-text-white">
                   <strong>ben çıktım</strong>
                 </a>
               </div>
