@@ -80,6 +80,7 @@ class Like(models.Model):
     def __str__(self):
         return str(self.post)
 
+
 class Posted(models.Model):
     userp = models.ForeignKey(User,related_name="posteds",on_delete=models.DO_NOTHING)
     bodyp = models.CharField(max_length=300)
@@ -87,9 +88,8 @@ class Posted(models.Model):
     
     def __str__(self):
         return (
-            f"{self.userp} "
-            f"({self.created_atp:%Y-%m-%d}): "
             f"{self.bodyp[:30]}..."
         )
+  
 
 

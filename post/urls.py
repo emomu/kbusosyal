@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import logoutt, profile_list , profile , kesfet , like_post , follows_list , followed_list , dashboardposted , loginn , register , giris , profile_list_query
+from .views import *
 
 app_name = "dwitter"
 
@@ -11,11 +11,12 @@ urlpatterns = [
     path("like/", like_post , name="like-post"),
     path("follows/<int:pk>", follows_list , name="follows-list"),
     path("followed/<int:pk>", followed_list , name="followed-list"),
-    path("yurtlar/", dashboardposted , name="yurtlar"),
+    path("yurtlar/", posted , name="yurtlar"),
     path("login/", loginn , name="login"),
     path("logout/", logoutt , name="logout"),
     path("register/", register , name="register"),
     path("aramasonucu/", profile_list_query , name="aramasonucu"),
+    path("sitehakkinda/", sitehakkinda , name="sitehakkinda"),
 
 
 ]

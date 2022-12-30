@@ -1,5 +1,5 @@
 
-from .models import Like ,  Dweet , Posted , Profile
+from .models import Like ,  Dweet , Posted , Profile 
 from .models import Profile as ProfileModel 
 from .forms import DweetForm , CreateUserForm 
 from django.shortcuts import render, redirect , get_object_or_404
@@ -14,11 +14,16 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.core.exceptions import ValidationError
 
+
 def giris(request):
     return render(request,"post/giris.html")
 
 @login_required(login_url='dwitter:login')
-def dashboardposted(request):
+def sitehakkinda(request):
+    return render(request,"post/sitehakkinda.html")
+
+@login_required(login_url='dwitter:login')
+def posted(request):
     qs = Posted.objects.all()
     userp = request.user
 
@@ -195,4 +200,5 @@ def register(request):
     return render(request,'post/register.html' ,context)
 
 
-   
+
+
