@@ -32,9 +32,6 @@ venv/Scripts/activate
 tamamdır şimdi  gerekli modülleri indirmeniz gerekir
 ```
 pip install django
-pip install asgiref==3.6.0
-pip install sqlparse==0.4.3
-pip install tzdata==2022.7
 ```
  
 bunları indirdikten sonra komut satırına şunları yazın:
