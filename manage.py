@@ -20,3 +20,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+    
+gunicorn --bind=0.0.0.0:$PORT --workers=4 kbusosyal:start_app()
